@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="css/StyleSheet.css" />
+    <script src="js/moment-with-locales.min.js"></script>
+    <script src="js/download.js"></script>
+    <script src="js/BackupViewer.js"></script>
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+</head>
+<body>
+    <div id="backupViewerAvailable">
+        <form class="viewer-selection-box">
+            <img src="img/xml.png" class="viewer-file-type-image" />
+            <div style="text-align: center;">
+                <br />
+                <label id="viewerFileLabel"><strong>Select a backup file (.xml) or drag it here to view</strong></label>
+                <br />
+                <input type="file" id="files" class="viewer-input-file" name="files[]" accept=".xml" title="Select a file" />
+                <label for="files">Select</label>
+                <br />
+                <table class="backupViewerSettingsTable">
+                    <tr>
+                        <td>
+                            <input type="checkbox" id="viewerLoadMediaCheckBox" title="Load Media" checked="checked" />
+                            <label id="viewerLoadMediaLabel" for="viewerLoadMediaCheckBox">Load images and other media</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="checkbox" id="viewerDisableCachingCheckBox" title="Reduce memory usage by not caching the messages. It is slower, but can be useful for very large backups." />
+                            <label id="viewerDisableCachingLabel" for="viewerDisableCachingCheckBox" title="Reduce memory usage by not caching the messages. It is slower, but can be useful for very large backups.">Do not cache messages</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Sort order:
+                            <select id="viewerSortOrder">
+                                <option value="Asc">Oldest first</option>
+                                <option value="Desc">Newest first</option>
+                            </select>
+                            &nbsp;&nbsp;Date format:
+                            <select id="viewerDateFormat">
+                                <option value="">Default</option>
+                                <option value="DD/MM/YYYY">DD/MM/YYYY</option>
+                                <option value="MM/DD/YYYY">MM/DD/YYYY</option>
+                                <option value="MMM DD YYYY">MMM DD YYYY</option>
+                                <option value="DD MMM YYYY">DD MMM YYYY</option>
+                                <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" name="viewerDateFilter" id="viewerAllDateRadio" checked="checked" onchange="handleDateRadioChange();" />
+                            <label for="viewerAllDateRadio">All dates</label>
+                            <input type="radio" name="viewerDateFilter" id="viewerDateRangeRadio" onchange="handleDateRadioChange();" />
+                            <label for="viewerDateRangeRadio">Date range</label>
+                            <label for="viewerDateStartInput">&nbsp;&nbsp;From:</label>
+                            <input type="date" id="viewerDateStartInput" disabled="disabled" />
+                            <label for="viewerDateEndInput">&nbsp;&nbsp;To:</label>
+                            <input type="date" id="viewerDateEndInput" disabled="disabled" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="backupViewer-text-label disabled" id="reloadLabel" onclick="loadFile();">Apply</label>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+        <div id="backupViewerProgressBarContainerDiv" style="visibility: hidden; padding-top: 5px;">
+            Processing <span id="backupViewerProgressCount"></span>...
+            <div id="backupViewerProgressBarDiv">
+                <div id="backupViewerProgressBar"></div>
+            </div>
+        </div>
+        <br />
+        <div id="backupViewerConversations"></div>
+        <div id="backupViewerShowConversationsButton" onclick="expandConversations();"><img src="img/arrow-right.png" width="20" /></div>
+        <div id="backupViewerRecordsList"></div>
+    </div>
+    <div id="backupViewerNotAvailable">
+        Unfortunately this browser does not support viewing the backup files.
+    </div>
+    <script type="text/javascript">
+        initializeBackupViewer();
+    </script>
+
+    <form id="viewer-error-contact-form" action="" method="post" target="_blank">
+        <input type="hidden" name="viewer_logs" id="viewer_logs" />
+    </form>
+</body>
+</html>

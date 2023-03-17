@@ -1,0 +1,212 @@
+﻿body {
+    font-family: arial,sans-serif;
+    color: #000;
+    font-size: 13px;
+    color: #333;
+}
+
+.backupViewerSettingsTable {
+    display: table;
+    border: 0px solid #ccc;
+    padding: 0px;
+    width: 100%;
+}
+
+.backupViewerSettingsTable td {
+    display: table-cell;
+    padding: 2px;
+    border: 0px solid #ccc;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.backupViewerSettingsTable tr {
+    display: table-row;
+    border: 0px solid #ccc;
+    padding: 0px;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.backupViewerSettingsTable input, .backupViewerSettingsTable select {
+    padding: 0px;
+    margin: 0px 5px 0px 5px;
+}
+
+.backupViewerTable {
+    font-size: 1em;
+    border-collapse: collapse;
+    border-width: 0;
+    empty-cells: show;
+    width: 100%;
+}
+
+.backupViewerTableHeader {
+    border: 1px solid #ccc;
+    padding: 6px;
+    text-align: left;
+    vertical-align: top;
+    background-color: #f5f5f5;
+    font-weight: bold;
+    width: 100%;
+}
+
+.backupViewerTable td, .backupViewerTable th {
+    border: 1px solid #ccc;
+    padding: 6px 12px;
+    text-align: left;
+    vertical-align: top;
+    background-color: inherit;
+}
+
+.backupViewerTable th {
+    border: 1px solid #ccc;
+    background-color: #f5f5f5;
+}
+
+.backupViewerTable a, .backupViewerTableHeader a {
+    font-size: 1.2em;
+    color: #1a73e8;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.backupViewerTable a:hover, .backupViewerTableHeader a:hover {
+    color: #333;
+}
+
+.viewer-selection-box {
+    background-color: white;
+    outline: 1px solid #ccc;
+    padding: 10px 10px;
+}
+
+.viewer-selection-box .box__dragndrop {
+    display: inline;
+}
+
+.viewer-selection-box.is-dragover {
+    background-color: #f5f5f5;
+}
+
+.viewer-file-type-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+/* hide the actual file selection control */
+.viewer-input-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+/* Label for the input file */
+.viewer-input-file + label, .backupViewer-text-label {
+    font-size: 1.25em;
+    display: inline-block;
+    cursor: pointer;
+    color: #1a73e8;
+    padding: 6px;
+}
+
+.viewer-input-file:hover + label, .backupViewer-text-label:hover {
+    background: #f5f5f5
+}
+
+.backupViewer-text-label.disabled {
+    color: gray;
+}
+
+#viewerFileLabel.error {
+    color: orangered;
+}
+
+#backupViewerProgressBarDiv {
+    width: 50%;
+    background-color: grey;
+}
+
+#backupViewerProgressBar {
+    width: 1%;
+    height: 10px;
+    background-color: green;
+}
+
+#backupViewerConversations {
+    float: left;
+    margin-right: 5px;
+    display: inline;
+    max-width: 35%;
+    height: 50vh;
+    overflow-y: auto;
+    resize: both;
+}
+
+#backupViewerShowConversationsButton {
+    float: left;
+    margin-right: 5px;
+    display: none;
+}
+
+#hideConversationsArrow {
+    float: right;
+    overflow-y: auto;
+    display: inline;
+}
+
+#backupViewerRecordsList {
+    overflow: auto;
+    height: 50vh;
+    overflow-y: auto;
+    min-width: 50%;
+    resize: both;
+}
+
+.backupViewerTH {
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: unset;
+    letter-spacing: unset;
+}
+
+.backupViewerImage {
+    display: block;
+    max-width: 40vw;
+}
+
+.backupViewerVideo {
+    display: block;
+    height: 360px;
+}
+
+@media print {
+    .backupViewerNoPrint, .backupViewerNoPrint * {
+        display: none !important;
+    }
+
+    #backupViewerConversations {
+        float: none;
+    }
+}
+
+.dont-break-out {
+    /* Make sure long texts like URLs don't stretch past the margins */
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
